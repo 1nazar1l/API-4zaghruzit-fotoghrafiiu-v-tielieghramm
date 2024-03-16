@@ -1,8 +1,21 @@
 from telegram import Bot
+import time
+import os
+import argparse
+import random
 
 
 bot_token = "7072799364:AAHgUr88fdlG9zVIJFFSP7X9rVM2DShY3i0"
 bot = Bot(token=bot_token)
-print(bot.get_me())
-# bot.send_message(chat_id="@dwnl_img", text="I'm sorry Dave I'm afraid I can't do that.")
-bot.send_document(chat_id="@dwnl_img", document=open('images/epic_photo_0.png', 'rb'))
+parser = argparse.ArgumentParser()
+parser.add_argument('--time', default="14400", help='Введите с какой частотой будут отправляться картинки:')
+args = parser.parse_args()
+while True:
+    folder = os.walk("images")
+    for i in folder:
+        dirpath, dirnames, filenames = i
+        random.shuffle(filenames)
+        for img in filenames:
+            bot.send_document(chat_id="@dwnl_img", document=open(f'images/{img}', 'rb'))
+            time.sleep(5)
+    time.sleep(args.time)
