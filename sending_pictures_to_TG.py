@@ -12,10 +12,12 @@ parser.add_argument('--time', default="14400", help='Введите с како�
 args = parser.parse_args()
 while True:
     folder = os.walk("images")
-    for i in folder:
-        dirpath, dirnames, filenames = i
+    for folder_contents in folder:
+        dirpath, dirnames, filenames = folder_contents
         random.shuffle(filenames)
         for img in filenames:
-            bot.send_document(chat_id="@dwnl_img", document=open(f'images/{img}', 'rb'))
+            with open(f'images/{img}', 'rb') as images:
+                bot.send_document(chat_id="@dwnl_img", document=images)
+
             time.sleep(5)
     time.sleep(args.time)
