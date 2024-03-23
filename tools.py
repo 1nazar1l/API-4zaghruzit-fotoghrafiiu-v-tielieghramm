@@ -1,5 +1,6 @@
 import requests
 import os
+from dotenv import load_dotenv
 
 
 def download_picture(image_link, filename, api_key=""):
@@ -11,5 +12,8 @@ def download_picture(image_link, filename, api_key=""):
         file.write(response.content)
 
 
-Api_token = "rIKZaIP0K4FUmPnwDpuu0Bn1BISWD2SdJbaRCTpX"
-params = {"api_key": Api_token}
+load_dotenv()
+bot_token = os.environ["TELEGRAM_TOKEN"]
+Nasa_api_token = os.environ["NASA_API_TOKEN"]
+
+params = {"api_key": Nasa_api_token}

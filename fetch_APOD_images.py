@@ -2,6 +2,7 @@ import requests
 from tools import download_picture, params
 import os
 from urllib.parse import urlparse
+import argparse
 
 
 def link_path_output(url):
@@ -10,7 +11,10 @@ def link_path_output(url):
     return root_ext[2]
 
 
-url = "https://api.nasa.gov/planetary/apod?count=5"
+parser = argparse.ArgumentParser()
+parser.add_argument('--count', default="5", help='Введите количество скачиваемых картинок:')
+args = parser.parse_args()
+url = f"https://api.nasa.gov/planetary/apod?count={args.count}"
 response = requests.get(url, params=params)
 response.raise_for_status()
 for url_number, nasa_object in enumerate(response.json()):

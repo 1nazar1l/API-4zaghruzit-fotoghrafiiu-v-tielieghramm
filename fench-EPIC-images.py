@@ -1,5 +1,5 @@
 import requests
-from tools import download_picture, params, Api_token
+from tools import download_picture, params, Nasa_api_token
 
 
 epic_url = "https://api.nasa.gov/EPIC/api/natural/images?"
@@ -15,4 +15,4 @@ for number, object in enumerate(response.json()):
     full_date = f"{year}/{month}/{day}"
     planet_image_url = f"https://api.nasa.gov/EPIC/archive/natural/{full_date}/png/{image}.png"
     filename = f"images/epic_photo_{number}.png"
-    download_picture(planet_image_url, filename, Api_token)
+    download_picture(planet_image_url, filename, Nasa_api_token)

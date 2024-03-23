@@ -3,9 +3,9 @@ import time
 import os
 import argparse
 import random
+from tools import bot_token
 
 
-bot_token = "7072799364:AAHgUr88fdlG9zVIJFFSP7X9rVM2DShY3i0"
 bot = Bot(token=bot_token)
 parser = argparse.ArgumentParser()
 parser.add_argument('--time', default="14400", help='Введите с какой частотой будут отправляться картинки:')
