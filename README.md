@@ -62,6 +62,14 @@ python sending_pictures_to_TG.py
 python sending_pictures_to_TG.py --time Период
 ```
 
+Также обязательно нужно указать id своего ТГ канала.
+
+Пример:
+
+```
+python sending_pictures_to_TG.py chat_id Ваше id ТГ канала
+```
+
 ## Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
