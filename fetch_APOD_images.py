@@ -6,7 +6,7 @@ import argparse
 from dotenv import load_dotenv
 
 
-def link_path_output(url):
+def get_extension(url):
     root_ext = os.path.splitext(url)
     root_ext = urlparse(root_ext[1])
     return root_ext[2]
@@ -26,7 +26,7 @@ def main():
     response = requests.get(url, params=params)
     response.raise_for_status()
     for url_number, nasa_inf_block in enumerate(response.json()):
-        root_ext = link_path_output(nasa_inf_block["url"])
+        root_ext = get_extension(nasa_inf_block["url"])
         filename = f"images/nasa_apod_{url_number}{root_ext}"
         download_picture(nasa_inf_block["url"], filename)
 
